@@ -1,21 +1,23 @@
 import 'package:cp_connects/view/login/step4_view.dart';
 import 'package:flutter/material.dart';
-
 import '../../common/color_extension.dart';
 import '../../common_widget/round_button.dart';
 import '../../common_widget/round_textfield.dart';
 
 class Step3View extends StatefulWidget {
-  const Step3View({super.key});
+  const Step3View({Key? key}) : super(key: key);
 
   @override
   State<Step3View> createState() => _Step3ViewState();
 }
 
 class _Step3ViewState extends State<Step3View> {
+  bool isPasswordVisible1 = true;
+  bool isPasswordVisible2 = true;
+
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.sizeOf(context);
+    var media = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: TColor.bg,
       appBar: AppBar(
@@ -43,9 +45,10 @@ class _Step3ViewState extends State<Step3View> {
               Text(
                 "Create a password",
                 style: TextStyle(
-                    color: TColor.primaryText,
-                    fontSize: 25,
-                    fontWeight: FontWeight.w700),
+                  color: TColor.primaryText,
+                  fontSize: 25,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
               const SizedBox(
                 height: 25,
@@ -60,14 +63,18 @@ class _Step3ViewState extends State<Step3View> {
               RoundTextField(
                 hintText: "Password",
                 keyboardType: TextInputType.name,
-                obscureText: true,
-                right: Container(
-                  width: 40,
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    "assets/img/show.png",
-                    width: 25,
-                    height: 25,
+                obscureText: isPasswordVisible1,
+                right: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isPasswordVisible1 = !isPasswordVisible1;
+                    });
+                  },
+                  child: Icon(
+                    isPasswordVisible1
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    color: Colors.black, // Change to the appropriate color
                   ),
                 ),
               ),
@@ -77,14 +84,18 @@ class _Step3ViewState extends State<Step3View> {
               RoundTextField(
                 hintText: "Re-Type Password",
                 keyboardType: TextInputType.name,
-                obscureText: true,
-                right: Container(
-                  width: 40,
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    "assets/img/show.png",
-                    width: 25,
-                    height: 25,
+                obscureText: isPasswordVisible2,
+                right: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isPasswordVisible2 = !isPasswordVisible2;
+                    });
+                  },
+                  child: Icon(
+                    isPasswordVisible2
+                        ? Icons.visibility
+                        : Icons.visibility_off,
+                    color: Colors.black, // Change to the appropriate color
                   ),
                 ),
               ),
@@ -92,15 +103,17 @@ class _Step3ViewState extends State<Step3View> {
                 height: 25,
               ),
               RoundButton(
-                  title: "Next",
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const Step4View(),
-                        ),
-                        (route) => false);
-                  })
+                title: "Next",
+                onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Step4View(),
+                    ),
+                    (route) => false,
+                  );
+                },
+              ),
             ],
           ),
         ),

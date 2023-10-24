@@ -1,6 +1,6 @@
 import 'package:cp_connects/view/login/step1_view.dart';
+import 'package:cp_connects/view/main_tab/main_tab_view.dart';
 import 'package:flutter/material.dart';
-
 import '../../common/color_extension.dart';
 import '../../common_widget/round_button.dart';
 import '../../common_widget/round_textfield.dart';
@@ -87,12 +87,13 @@ class _LoginViewState extends State<LoginView> {
               RoundButton(
                   title: "Login",
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const Step2View(),
-                    //   ),
-                    // );
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainTabView(),
+                      ),
+                      (route) => false,
+                    );
                   }),
               const Spacer(),
               Row(

@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
       "image": "assets/img/u2.png",
       "status": "Mississauga, Ontario",
       "time": "5mins ago",
-      "is_online": false,
+      "is_online": true,
       "images": ["assets/img/p4.png", "assets/img/p5.png", "assets/img/p6.png"]
     },
     {
@@ -42,7 +42,7 @@ class _HomeViewState extends State<HomeView> {
       "image": "assets/img/u3.png",
       "status": "Markham, Ontario",
       "time": "10mins ago",
-      "is_online": true,
+      "is_online": false,
       "images": ["assets/img/p7.png", "assets/img/p8.png", "assets/img/p9.png"]
     },
     {
@@ -50,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
       "image": "assets/img/u4.png",
       "status": "Oakvill Ontario",
       "time": "2days ago",
-      "is_online": false,
+      "is_online": true,
       "images": [
         "assets/img/p10.png",
         "assets/img/p11.png",
@@ -77,16 +77,20 @@ class _HomeViewState extends State<HomeView> {
           },
           icon: Image.asset(
             "assets/img/chat.png",
-            width: 35,
-            height: 35,
+            width: 32,
+            height: 32,
+            color: TColor.base,
           ),
         ),
         centerTitle: true,
         title: Text(
-          "Logo",
+          "CP Connects",
           style: TextStyle(
-            color: TColor.primaryText,
-            fontSize: 26,
+            foreground: Paint()
+              ..shader = LinearGradient(colors: TColor.primaryG)
+                  .createShader(const Rect.fromLTWH(50, 100, 100, 100)),
+            fontSize: 22,
+            letterSpacing: 1,
             fontWeight: FontWeight.w700,
           ),
         ),

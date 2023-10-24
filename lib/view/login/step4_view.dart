@@ -1,3 +1,4 @@
+import 'package:cp_connects/view/main_tab/main_tab_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
@@ -44,15 +45,24 @@ class _Step4ViewState extends State<Step4View> {
               RoundButton(
                   title: "Allow Notifications",
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => const Step2View(),
-                    //   ),
-                    // );
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainTabView(),
+                      ),
+                      (route) => false,
+                    );
                   }),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const MainTabView(),
+                      ),
+                      (route) => false,
+                    );
+                  },
                   child: Text(
                     "Skip for now",
                     style: TextStyle(

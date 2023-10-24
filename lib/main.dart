@@ -1,5 +1,5 @@
 import 'package:cp_connects/common/color_extension.dart';
-import 'package:cp_connects/view/main_tab/main_tab_view.dart';
+import 'package:cp_connects/view/login/welcome_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: TColor.primary),
         useMaterial3: false,
       ),
-      home: const MainTabView(),
+      home: const WelcomeView(),
     );
   }
 }

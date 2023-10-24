@@ -1,7 +1,8 @@
+import 'package:cp_connects/view/home/chat_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
- 
+
 class DetailsView extends StatefulWidget {
   const DetailsView({super.key});
 
@@ -34,19 +35,22 @@ class _DetailsViewState extends State<DetailsView> {
         backgroundColor: Colors.white,
         elevation: 0.5,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Image.asset(
-            "assets/img/chat.png",
-            width: 35,
-            height: 35,
+            "assets/img/back.png",
+            width: 25,
+            height: 25,
           ),
         ),
         centerTitle: true,
         title: Text(
-          "Logo",
+          "My Profile",
           style: TextStyle(
             color: TColor.primaryText,
-            fontSize: 26,
+            fontSize: 20,
+            letterSpacing: 1,
             fontWeight: FontWeight.w700,
           ),
         ),

@@ -34,6 +34,7 @@ class _MainTabViewState extends State<MainTabView>
   Widget build(BuildContext context) {
     return Scaffold(
       body: TabBarView(
+        
         controller: controller,
         children: const [
           HomeView(),
@@ -77,12 +78,15 @@ class _MainTabViewState extends State<MainTabView>
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
+        
         color: Colors.white,
+        
         elevation: 1,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
+          
             children: [
               TabButton(
                 title: "HOME",
