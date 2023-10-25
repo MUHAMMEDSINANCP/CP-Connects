@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../common/color_extension.dart';
 import '../../common_widget/notification_section_row.dart';
 import '../home/details_view.dart';
+import '../main_tab/main_tab_view.dart';
 
 class NotificationsView extends StatefulWidget {
   const NotificationsView({super.key});
@@ -116,8 +117,8 @@ class _NotificationsViewState extends State<NotificationsView> {
         elevation: 1,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
-          },
+       Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const MainTabView()));          },
           icon: Image.asset(
             "assets/img/back.png",
             width: 25,

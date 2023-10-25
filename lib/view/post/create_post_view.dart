@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
 import '../home/details_view.dart';
+import '../main_tab/main_tab_view.dart';
 import 'post_detail_view.dart';
 
 class CreatePostView extends StatefulWidget {
@@ -28,7 +29,9 @@ class _CreatePostViewState extends State<CreatePostView> {
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Image.asset(
             "assets/img/back.png",
             width: 25,
@@ -37,7 +40,7 @@ class _CreatePostViewState extends State<CreatePostView> {
         ),
         centerTitle: false,
         title: Text(
-          "Post",
+          "Create Post",
           style: TextStyle(
             color: TColor.primaryText,
             fontSize: 20,

@@ -1,3 +1,4 @@
+import 'package:cp_connects/view/main_tab/main_tab_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
@@ -92,7 +93,8 @@ class _StoriesViewState extends State<StoriesView> {
         elevation: 0,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const MainTabView()));
           },
           icon: Image.asset(
             "assets/img/back.png",

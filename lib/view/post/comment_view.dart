@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
 import '../../common_widget/comment_row.dart';
+import '../home/details_view.dart';
 
 class CommentView extends StatefulWidget {
   const CommentView({super.key});
@@ -72,7 +73,14 @@ class _CommentViewState extends State<CommentView> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DetailsView(),
+                ),
+              );
+            },
             icon: ClipRRect(
               borderRadius: BorderRadius.circular(17.5),
               child: Image.asset(

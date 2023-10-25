@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../common/color_extension.dart';
- 
+
 class UserNotificationRow extends StatelessWidget {
   final Map nObj;
   const UserNotificationRow({super.key, required this.nObj});
@@ -54,10 +54,13 @@ class UserNotificationRow extends StatelessWidget {
               ],
             ),
           ),
-    
-          IconButton(onPressed: (){
-    
-          }, icon: Image.asset("assets/img/more.png", width: 20, height: 20, ) )
+          IconButton(
+              onPressed: () {},
+              icon: Image.asset(
+                "assets/img/more.png",
+                width: 20,
+                height: 20,
+              ))
         ],
       ),
     );

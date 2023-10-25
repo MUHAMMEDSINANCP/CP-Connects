@@ -221,7 +221,7 @@ class _DetailsViewState extends State<DetailsView> {
                               ),
                             ),
                             Text(
-                              "@ArgoRadius",
+                              "@AdamBereTechnologies",
                               style: TextStyle(
                                 color: TColor.primary,
                                 fontSize: 14,
@@ -234,15 +234,18 @@ class _DetailsViewState extends State<DetailsView> {
                         ),
                         Text.rich(
                           TextSpan(
-                              text:
-                                  "Obsessed with Fahim MD's YouTube channel, love to go shopping on weekends and loveee food ",
+                              text: """ HR Professional | Talent Enthusiast
+📊 Navigating the World of Recruitment
+💼 Connecting People with Opportunities
+🌟 Building Strong Teams, One Hire at a Time
+🔗 Linking Skills and Careers""",
                               style: TextStyle(
                                 color: TColor.primaryText,
                                 fontSize: 14,
                               ),
                               children: [
                                 TextSpan(
-                                  text: "#foodielife",
+                                  text: "  #foodielife #techenthusiast",
                                   style: TextStyle(
                                     color: TColor.primary,
                                     fontSize: 14,

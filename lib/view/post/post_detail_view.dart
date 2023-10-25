@@ -1,10 +1,13 @@
 import 'package:avatar_stack/avatar_stack.dart';
 import 'package:avatar_stack/positions.dart';
 import 'package:cp_connects/view/post/comment_view.dart';
+import 'package:cp_connects/view/stories/stories_view.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
 import '../../common_widget/comment_row.dart';
+import '../home/details_view.dart';
 
 class PostDetailView extends StatefulWidget {
   const PostDetailView({super.key});
@@ -23,7 +26,7 @@ class _PostDetailViewState extends State<PostDetailView> {
     },
     {
       "name": "Jimmy Love",
-      "comment": "Where's you office?",
+      "comment": "Where's your office?",
       "time": "30m ago",
       "image": "assets/img/u2.png"
     },
@@ -63,7 +66,9 @@ class _PostDetailViewState extends State<PostDetailView> {
         backgroundColor: Colors.white,
         elevation: 0.5,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Image.asset(
             "assets/img/back.png",
             width: 25,
@@ -81,7 +86,14 @@ class _PostDetailViewState extends State<PostDetailView> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const DetailsView(),
+                ),
+              );
+            },
             icon: ClipRRect(
               borderRadius: BorderRadius.circular(17.5),
               child: Image.asset(
@@ -114,16 +126,19 @@ class _PostDetailViewState extends State<PostDetailView> {
                   margin: const EdgeInsets.only(top: 20),
                   width: media.width,
                   decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(50)),
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.black54,
-                            blurRadius: 10,
-                            offset: Offset(0, -15))
-                      ]),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50),
+                      topRight: Radius.circular(50),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black54,
+                        blurRadius: 10,
+                        offset: Offset(0, -15),
+                      ),
+                    ],
+                  ),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: Column(
@@ -171,47 +186,52 @@ class _PostDetailViewState extends State<PostDetailView> {
                           child: Row(
                             children: [
                               SizedBox(
-                                width: 80,
-                                height: 50,
+                                width: 60,
+                                height: 40,
                                 child: WidgetStack(
                                   positions: settings,
                                   stackedWidgets: [
                                     "assets/img/u1.png",
-                                    "assets/img/u2.png"
+                                    "assets/img/u2.png",
                                   ]
-                                      .map((img) => Container(
-                                            width: 45,
-                                            height: 45,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(25),
-                                                border: Border.all(
-                                                    color: Colors.white,
-                                                    width: 2),
-                                                color: Colors.white,
-                                                boxShadow: const [
-                                                  BoxShadow(
-                                                    color: Colors.black12,
-                                                    blurRadius: 2,
-                                                  )
-                                                ]),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(25),
-                                              child: Image.asset(
-                                                img ?? "",
-                                                width: 45,
-                                                height: 45,
-                                                fit: BoxFit.cover,
-                                              ),
+                                      .map(
+                                        (img) => Container(
+                                          width: 45,
+                                          height: 45,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                            border: Border.all(
+                                              color: Colors.white,
+                                              width: 2,
                                             ),
-                                          ))
+                                            color: Colors.white,
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                color: Colors.black12,
+                                                blurRadius: 2,
+                                              ),
+                                            ],
+                                          ),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(25),
+                                            child: Image.asset(
+                                              img,
+                                              width: 45,
+                                              height: 45,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                      )
                                       .toList(),
                                   buildInfoWidget: (surplus) {
                                     return Center(
-                                        child: Text(
-                                      '+$surplus',
-                                    ));
+                                      child: Text(
+                                        '+$surplus',
+                                      ),
+                                    );
                                   },
                                 ),
                               ),
@@ -226,22 +246,45 @@ class _PostDetailViewState extends State<PostDetailView> {
                                     Text(
                                       "Liked by",
                                       textAlign: TextAlign.left,
-                                      maxLines: 1,
                                       style: TextStyle(
                                         color: TColor.secondaryText,
                                         fontSize: 13,
                                       ),
                                     ),
-                                    Text(
-                                      "Earl Garcia, Nancy Maio",
-                                      textAlign: TextAlign.left,
-                                      maxLines: 1,
-                                      style: TextStyle(
-                                        color: TColor.primaryText,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600,
+                                    Expanded(
+                                      child: RichText(
+                                        text: TextSpan(
+                                          children: [
+                                            TextSpan(
+                                              text: "Earl Garcia, Nancy Maio",
+                                              style: TextStyle(
+                                                color: TColor.primaryText,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                            TextSpan(
+                                              text: " and 40 others",
+                                              style: const TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                              recognizer: TapGestureRecognizer()
+                                                ..onTap = () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const StoriesView(),
+                                                    ),
+                                                  );
+                                                },
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
                               ),
@@ -251,35 +294,36 @@ class _PostDetailViewState extends State<PostDetailView> {
                         const Divider(),
                         Text.rich(
                           TextSpan(
-                              text:
-                                  "Obsessed with my desk at work. All cleaned & organized after 5 years ",
-                              style: TextStyle(
-                                color: TColor.primaryText,
-                                fontSize: 14,
+                            text:
+                                "Obsessed with my desk at work. All cleaned & organized after 5 years ",
+                            style: TextStyle(
+                              color: TColor.primaryText,
+                              fontSize: 14,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "#workdesk",
+                                style: TextStyle(
+                                  color: TColor.primary,
+                                  fontSize: 14,
+                                ),
                               ),
-                              children: [
-                                TextSpan(
-                                  text: "#workdesk",
-                                  style: TextStyle(
-                                    color: TColor.primary,
-                                    fontSize: 14,
-                                  ),
+                              TextSpan(
+                                text: " #worklife",
+                                style: TextStyle(
+                                  color: TColor.primary,
+                                  fontSize: 14,
                                 ),
-                                TextSpan(
-                                  text: " #worklife",
-                                  style: TextStyle(
-                                    color: TColor.primary,
-                                    fontSize: 14,
-                                  ),
+                              ),
+                              TextSpan(
+                                text: " #agency",
+                                style: TextStyle(
+                                  color: TColor.primary,
+                                  fontSize: 14,
                                 ),
-                                TextSpan(
-                                  text: " #agency",
-                                  style: TextStyle(
-                                    color: TColor.primary,
-                                    fontSize: 14,
-                                  ),
-                                )
-                              ]),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(
                           height: 4,
@@ -291,27 +335,52 @@ class _PostDetailViewState extends State<PostDetailView> {
                             fontSize: 13,
                           ),
                         ),
+                        Divider(
+                            color: TColor.primaryText.withOpacity(0.5),
+                            thickness: 1),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.forum,
+                              color: TColor.primaryEnd.withOpacity(0.5),
+                              size: 19,
+                            ),
+                            Text(
+                              " Highlighted Comments",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: TColor.secondaryText,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            Icon(
+                              Icons.expand_more,
+                              color: TColor.secondaryText,
+                              size: 19,
+                            ),
+                          ],
+                        ),
                         const Divider(),
                         ListView.builder(
-                            padding: EdgeInsets.zero,
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: commentArr.length,
-                            itemBuilder: (context, index) {
-                              var cObj = commentArr[index] as Map? ?? {};
-                              return CommentRow(
-                                cObj: cObj,
-                              );
-                            }),
+                          padding: EdgeInsets.zero,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: commentArr.length,
+                          itemBuilder: (context, index) {
+                            var cObj = commentArr[index] as Map? ?? {};
+                            return CommentRow(
+                              cObj: cObj,
+                            );
+                          },
+                        ),
                         const SizedBox(
                           height: 50,
                         ),
                       ],
                     ),
                   ),
-                )
+                ),
               ],
-            )
+            ),
           ],
         ),
       ),

@@ -3,7 +3,7 @@ import 'package:avatar_stack/positions.dart';
 import 'package:flutter/material.dart';
 
 import '../common/color_extension.dart';
- 
+
 class UserChatRow extends StatelessWidget {
   final Map uObj;
   final VoidCallback onPressed;
@@ -39,7 +39,8 @@ class UserChatRow extends StatelessWidget {
                             height: 45,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(25),
-                                border: Border.all(color: Colors.white, width: 2),
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
                                 color: Colors.white,
                                 boxShadow: const [
                                   BoxShadow(
@@ -70,37 +71,34 @@ class UserChatRow extends StatelessWidget {
               Stack(
                 alignment: Alignment.topRight,
                 children: [
-    
                   Container(
-                            width: 50,
-                            height: 50,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                border: Border.all(color: Colors.white, width: 2),
-                                color: Colors.white,
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Colors.black12,
-                                    blurRadius: 1,
-                                  )
-                                ]),
-                            child:
-    
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.asset(
-                      uObj["image"] as String? ?? "",
-                      width: 50,
-                      height: 50,
-                      fit: BoxFit.cover,
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(color: Colors.white, width: 2),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black12,
+                            blurRadius: 1,
+                          )
+                        ]),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        uObj["image"] as String? ?? "",
+                        width: 50,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
                     ),
-                  ),),
+                  ),
                   if (uObj["is_online"] as bool? ?? false)
                     Container(
                       width: 15,
                       height: 15,
                       decoration: BoxDecoration(
-                          color: TColor.base,
+                          color: Colors.green,
                           border: Border.all(color: Colors.white, width: 2),
                           borderRadius: BorderRadius.circular(7.5),
                           boxShadow: const [
@@ -156,15 +154,15 @@ class UserChatRow extends StatelessWidget {
                         ),
                       ),
                       if (uObj["is_online"] as bool? ?? false)
-                      Text(
-                        "Active",
-                        textAlign: TextAlign.left,
-                        maxLines: 1,
-                        style: TextStyle(
-                          color: TColor.base,
-                          fontSize: 11,
-                        ),
-                      )
+                        Text(
+                          "Active",
+                          textAlign: TextAlign.left,
+                          maxLines: 1,
+                          style: TextStyle(
+                            color: TColor.base,
+                            fontSize: 11,
+                          ),
+                        )
                     ],
                   )
                 ],

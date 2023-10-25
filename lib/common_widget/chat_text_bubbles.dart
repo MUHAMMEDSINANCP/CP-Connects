@@ -37,24 +37,26 @@ class ChatTextBubbles extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(30),
                     child: Image.asset(
-                      uObj["image"] as String? ?? "",
+                      uObj["image"].toString(),
                       width: 60,
                       height: 60,
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                Container(
-                  width: 15,
-                  height: 15,
-                  decoration: BoxDecoration(
-                      color: TColor.base,
-                      border: Border.all(color: Colors.white, width: 2),
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: const [
-                        BoxShadow(color: Colors.black12, blurRadius: 2)
-                      ]),
-                )
+                // Green Circle above profiles
+
+                // Container(
+                //   width: 15,
+                //   height: 15,
+                //   decoration: BoxDecoration(
+                //       color: TColor.base,
+                //       border: Border.all(color: Colors.white, width: 2),
+                //       borderRadius: BorderRadius.circular(10),
+                //       boxShadow: const [
+                //         BoxShadow(color: Colors.black12, blurRadius: 2)
+                //       ]),
+                // )
               ]),
               const SizedBox(
                 width: 10,
@@ -79,9 +81,9 @@ class ChatTextBubbles extends StatelessWidget {
                           style: const TextStyle(
                               color: Colors.white, fontSize: 15),
                         ),
-
-                        const SizedBox(height: 4,),
-
+                        const SizedBox(
+                          height: 4,
+                        ),
                         Text(
                           cObj["time"] as String? ?? "",
                           textAlign: TextAlign.left,

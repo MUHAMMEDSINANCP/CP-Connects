@@ -87,7 +87,9 @@ class _ChatConversationViewState extends State<ChatConversationView> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
-                    widget.uObj["image"] as String? ?? "",
+                    widget.uObj["image"] is List
+                        ? widget.uObj["image"][0]
+                        : widget.uObj["image"].toString(),
                     width: 40,
                     height: 40,
                     fit: BoxFit.cover,
@@ -110,7 +112,7 @@ class _ChatConversationViewState extends State<ChatConversationView> {
               width: 8,
             ),
             Text(
-              widget.uObj["name"] as String? ?? "",
+              widget.uObj["name"].toString(),
               style: TextStyle(
                 color: TColor.primaryText,
                 fontSize: 20,
@@ -148,6 +150,7 @@ class _ChatConversationViewState extends State<ChatConversationView> {
                     ? {"image": "assets/img/user_profile.png"}
                     : widget.uObj,
                 isLeft: cObj["is_sender"] as bool? ?? false,
+                
               );
             } else {
               // Date Row

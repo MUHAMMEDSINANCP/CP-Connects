@@ -4,6 +4,7 @@ import '../../common/color_extension.dart';
 import '../../common_widget/user_row.dart';
 import '../../common_widget/user_story_cell.dart';
 import '../home/details_view.dart';
+import '../main_tab/main_tab_view.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -124,7 +125,10 @@ class _SearchViewState extends State<SearchView> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const MainTabView()));
+          },
           icon: Image.asset(
             "assets/img/back.png",
             width: 25,

@@ -3,7 +3,7 @@ import 'package:avatar_stack/positions.dart';
 import 'package:flutter/material.dart';
 
 import '../common/color_extension.dart';
- 
+
 class GroupCell extends StatelessWidget {
   final Map gObj;
   final VoidCallback onPressed;
@@ -11,7 +11,6 @@ class GroupCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var imagesArr = gObj["image"] as List? ?? [];
 
     final settings = RestrictedPositions(
@@ -40,28 +39,25 @@ class GroupCell extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
-             SizedBox(
+            SizedBox(
               width: 120,
               height: 30,
               child: WidgetStack(
                 positions: settings,
-                stackedWidgets: imagesArr.map((img) => 
-
-                  Container(
+                stackedWidgets: imagesArr
+                    .map((img) => Container(
                           width: 30,
                           height: 30,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: Colors.white, width: 2),
-                            color: Colors.white,
-                             boxShadow: const [
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.white, width: 2),
+                              color: Colors.white,
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.black12,
                                   blurRadius: 1,
                                 )
-                              ]
-                          ),
+                              ]),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
                             child: Image.asset(
@@ -71,8 +67,8 @@ class GroupCell extends StatelessWidget {
                               fit: BoxFit.cover,
                             ),
                           ),
-                        )
-                ).toList() ,
+                        ))
+                    .toList(),
                 buildInfoWidget: (surplus) {
                   return Center(
                       child: Text(
@@ -81,9 +77,9 @@ class GroupCell extends StatelessWidget {
                 },
               ),
             ),
-
-            const SizedBox(height: 8,),
-
+            const SizedBox(
+              height: 8,
+            ),
             Text(
               gObj["name"] as String? ?? "",
               textAlign: TextAlign.center,
@@ -109,12 +105,14 @@ class GroupCell extends StatelessWidget {
             const SizedBox(
               height: 4,
             ),
-
-            const Divider(color: Colors.black12, indent: 8, endIndent: 8, ),
+            const Divider(
+              color: Colors.black12,
+              indent: 8,
+              endIndent: 8,
+            ),
             const SizedBox(
               height: 4,
             ),
-
             Text(
               "${gObj["members"] as String? ?? ""} Members",
               textAlign: TextAlign.center,
@@ -124,10 +122,8 @@ class GroupCell extends StatelessWidget {
                 fontSize: 11,
               ),
             ),
-
             Text(
-               "${gObj["comments"] as String? ?? ""} Comments",
-             
+              "${gObj["comments"] as String? ?? ""} Comments",
               textAlign: TextAlign.center,
               maxLines: 1,
               style: TextStyle(

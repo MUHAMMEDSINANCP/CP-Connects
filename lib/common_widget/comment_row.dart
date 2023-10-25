@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../common/color_extension.dart';
- 
+
 class CommentRow extends StatelessWidget {
   final Map cObj;
   const CommentRow({super.key, required this.cObj});
@@ -71,10 +71,9 @@ class CommentRow extends StatelessWidget {
           SizedBox(
             width: 60,
             child: TextButton(
-              
               onPressed: () {},
               child: Text(
-                "Replay",
+                "Reply",
                 style: TextStyle(color: TColor.secondaryText, fontSize: 13),
               ),
             ),
@@ -83,8 +82,8 @@ class CommentRow extends StatelessWidget {
               onPressed: () {},
               icon: Image.asset(
                 "assets/img/fav.png",
-                width: 20,
-                height: 20,
+                width: 17,
+                height: 17,
               ))
         ],
       ),
