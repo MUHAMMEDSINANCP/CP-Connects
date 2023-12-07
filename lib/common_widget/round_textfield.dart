@@ -26,7 +26,7 @@ class RoundTextField extends StatefulWidget {
 }
 
 class _RoundTextFieldState extends State<RoundTextField> {
-  bool _isPasswordVisible = false;
+  // bool _isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +52,6 @@ class _RoundTextFieldState extends State<RoundTextField> {
               ? GestureDetector(
                   onTap: () {
                     widget.togglePasswordVisibility?.call();
-
                   },
                   child: widget.right,
                 )
