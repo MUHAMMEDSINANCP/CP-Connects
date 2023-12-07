@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
 import '../common/color_extension.dart';
- 
+
 enum RoundButtonType { whiteBoard, primary }
 
 class RoundButton extends StatelessWidget {
   final String title;
   final VoidCallback onPressed;
+  final bool isLoading;
   final RoundButtonType type;
 
-  const RoundButton(
-      {super.key,
-      required this.title,
-      required this.onPressed,
-      this.type = RoundButtonType.primary});
+  const RoundButton({
+    super.key,
+    required this.title,
+    required this.onPressed,
+    this.type = RoundButtonType.primary,
+    this.isLoading = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,13 +37,23 @@ class RoundButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: TextStyle(
-                color: TColor.primaryTextW,
-                fontSize: 15,
-              ),
-            ),
+            isLoading
+                ? SizedBox(
+                    height: 26,
+                    width: 26,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 5,
+                      color: Colors.white,
+                      backgroundColor: TColor.secondaryEnd,
+                    ),
+                  )
+                : Text(
+                    title,
+                    style: TextStyle(
+                      color: TColor.primaryTextW,
+                      fontSize: 15,
+                    ),
+                  ),
           ],
         ),
       ),

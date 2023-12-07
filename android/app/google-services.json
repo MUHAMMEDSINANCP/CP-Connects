@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "116159923534",
+    "project_id": "cp-connects",
+    "storage_bucket": "cp-connects.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116159923534:android:1975b032d480c701ff0a1f",
+        "android_client_info": {
+          "package_name": "com.example.cp_connects"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgdqjpXo1jHvgZTS-zdxPyjcQ3mZl0qME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

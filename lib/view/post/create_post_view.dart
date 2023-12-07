@@ -1,8 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 import '../../common/color_extension.dart';
 import '../home/details_view.dart';
-import '../main_tab/main_tab_view.dart';
 import 'post_detail_view.dart';
 
 class CreatePostView extends StatefulWidget {
@@ -13,6 +13,28 @@ class CreatePostView extends StatefulWidget {
 }
 
 class _CreatePostViewState extends State<CreatePostView> {
+  String userName = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  void fetchUserData() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+
+      setState(() {
+        userName = userSnapshot['name'];
+      });
+    }
+  }
+
   List imageArr = [
     "assets/img/po_1.png",
     "assets/img/po_2.png",
@@ -78,7 +100,7 @@ class _CreatePostViewState extends State<CreatePostView> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              "What's on your mind?",
+              "$userName, \n what's on your mind?",
               style: TextStyle(
                 color: TColor.primaryText,
                 fontSize: 16,

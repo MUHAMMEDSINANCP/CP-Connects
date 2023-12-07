@@ -7,6 +7,8 @@ class RoundTextField extends StatefulWidget {
   final TextEditingController? controller;
   final Widget? right;
   final bool obscureText;
+  final String? Function(String?)? validator;
+  final VoidCallback? togglePasswordVisibility;
 
   const RoundTextField({
     Key? key,
@@ -15,6 +17,8 @@ class RoundTextField extends StatefulWidget {
     this.controller,
     this.right,
     this.obscureText = false,
+    this.validator,
+    this.togglePasswordVisibility,
   }) : super(key: key);
 
   @override
@@ -33,27 +37,24 @@ class _RoundTextFieldState extends State<RoundTextField> {
       decoration: BoxDecoration(
           border: Border.all(color: TColor.secondaryText, width: 1),
           borderRadius: BorderRadius.circular(25)),
-      child: TextField(
+      child: TextFormField(
         controller: widget.controller,
         keyboardType: widget.keyboardType,
+
         obscureText:
-            !_isPasswordVisible, // Use local variable to control obscure text
+            widget.obscureText, // Use local variable to control obscure text
+
+        // validator: widget.validator,
         decoration: InputDecoration(
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
           suffixIcon: widget.right != null
               ? GestureDetector(
                   onTap: () {
-                    setState(() {
-                      _isPasswordVisible = !_isPasswordVisible;
-                    });
+                    widget.togglePasswordVisibility?.call();
+
                   },
-                  child: Icon(
-                    _isPasswordVisible
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                    color: TColor.secondaryText,
-                  ),
+                  child: widget.right,
                 )
               : null,
           hintText: widget.hintText,

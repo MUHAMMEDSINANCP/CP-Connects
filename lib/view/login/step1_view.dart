@@ -1,7 +1,6 @@
 import 'package:cp_connects/common_widget/round_button.dart';
 import 'package:cp_connects/view/login/step2_view.dart';
 import 'package:flutter/material.dart';
-
 import '../../common/color_extension.dart';
 import '../../common_widget/round_textfield.dart';
 
@@ -13,6 +12,9 @@ class Step1View extends StatefulWidget {
 }
 
 class _Step1ViewState extends State<Step1View> {
+  TextEditingController txtName = TextEditingController();
+  TextEditingController txtLastName = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var media = MediaQuery.sizeOf(context);
@@ -50,14 +52,16 @@ class _Step1ViewState extends State<Step1View> {
               const SizedBox(
                 height: 25,
               ),
-              const RoundTextField(
+              RoundTextField(
                 hintText: "First Name",
                 keyboardType: TextInputType.name,
+                controller: txtName,
               ),
               const SizedBox(
                 height: 15,
               ),
-              const RoundTextField(
+              RoundTextField(
+                controller: txtLastName,
                 hintText: "Last Name",
                 keyboardType: TextInputType.name,
               ),
@@ -65,15 +69,42 @@ class _Step1ViewState extends State<Step1View> {
                 height: 25,
               ),
               RoundButton(
-                  title: "Next",
-                  onPressed: () {
+                title: "Next",
+                onPressed: () {
+                  if (txtName.text.isNotEmpty && txtLastName.text.isNotEmpty) {
+                    // Both fields have data, navigate to the next screen
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Step2View(),
+                        builder: (context) =>   Step2View(
+                          firstName: txtName.text,
+                          lastName: txtLastName.text,
+                        ),
                       ),
                     );
-                  })
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        dismissDirection: DismissDirection.up,
+                        behavior: SnackBarBehavior.floating,
+                        duration: const Duration(seconds: 2),
+                        margin: EdgeInsets.only(
+                            bottom: MediaQuery.of(context).size.width * 0.1,
+                            left: 26,
+                            right: 26),
+                        backgroundColor: Colors.redAccent,
+                        content: const Text(
+                          "Please enter both first name and last name.",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
+                },
+              )
             ],
           ),
         ),

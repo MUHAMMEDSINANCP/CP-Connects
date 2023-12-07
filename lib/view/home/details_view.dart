@@ -1,4 +1,5 @@
-import 'package:cp_connects/view/home/chat_view.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/color_extension.dart';
@@ -11,6 +12,28 @@ class DetailsView extends StatefulWidget {
 }
 
 class _DetailsViewState extends State<DetailsView> {
+  String userName = "";
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  void fetchUserData() async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+
+      setState(() {
+        userName = userSnapshot['name'];
+      });
+    }
+  }
+
   List imagesArr = [
     "assets/img/d1.png",
     "assets/img/d2.png",
@@ -204,7 +227,7 @@ class _DetailsViewState extends State<DetailsView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Jenna Feranandez",
+                          userName,
                           style: TextStyle(
                             color: TColor.primaryText,
                             fontSize: 16,
