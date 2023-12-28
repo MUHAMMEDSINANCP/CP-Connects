@@ -1,6 +1,6 @@
 ## CP Connects
 
-Utilizing Firebase authentication and clean architecture with Flutter state management, CP Connects is a dynamic social app designed to elevate connections. Experience a seamless interface encompassing various features:
+Utilizing Firebase authentication and clean architecture with Flutter state management, CP Connects is a dynamic social app designed to elevate connections. Experience a seamless interface encompassing various features.
 
 ### Key Concepts Covered:
 Login Screen: Intuitive and user-friendly login interface, including Facebook login integration.
