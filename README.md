@@ -30,3 +30,4 @@ For any suggestions or feedback, please reach out to cpmuhammedsinan@gmail.com. 
 ### Technologies Utilized :
 Firebase Authentication, Clean Architecture, Flutter State Management
 
+ 
